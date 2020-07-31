@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Assignment</title>
+    <style>
+        span{
+            font-weight: bold;
+            color: red;
+        }
+        .Register{
+  border: 2px solid black;
+  width: 40%;
+  margin-top: 20px;
+  margin-bottom: 29px;
+  padding-bottom: 15px;
+  margin-left: 5%;
+  color: black;
+  background-color: rgb(151, 211, 211);
+}
+
+
+
+    </style>
+</head>
+<body>
+    <img style="border: 2px solid black ; margin-left: 5%;" src="Assign.PNG" alt="Assignment" width="85%" height="400px" >
+    <div class="Register">  
+    <h2 style="color: blue;">Enter Your Credentials :</h2>
+    <form name="prn" onSubmit="return checkDetails();">
+      
+            <b>Name Of Student : </b><input type="text"  name=name" placeholder="Enter Your Name" id="i1" ><br>             
+                      <span id="alt1" class="text-danger font-weight-bold"> </span><br>
+
+                      <b>Enter your Branch : </b><select name="Branch" id="i2" >
+                
+                <option value="CH">Chemical</option>
+                <option value="CV">Civil</option>
+                <option value="CS">Computer Science</option>
+                <option value="EX">Electronics</option>
+                <option value="ME">Mechanical</option>
+            </select>
+                       <span id="alt2" class="text-danger font-weight-bold"> </span><br><br>
+              <input type="submit" name="submit" value="Submit" />
+        
+    </form>
+    </div>
+</body>
+<script>
+
+   function checkDetails(){
+       var b;
+       var b=document.getElementById("i1").value;
+       if(b == ""){
+          document.getElementById('alt1').innerHTML =" * Name can't be Empty";
+          return false;
+       }
+      else if((b.length <= 3) || (b.length > 20)) {
+          document.getElementById('alt1').innerHTML =" * Name length must be between 3 and 20";
+          return false;
+       }
+      else if(!isNaN(b)){
+          document.getElementById('alt1').innerHTML =" *only characters are allowed";
+          return false;
+      }
+      else{
+          document.getElementById('alt1').innerHTML ="";
+      }
+
+   }
+
+   function add_details()
+            {
+                arrayname[i] = document.getElementById("name").value;
+                arraybranch[i] = document.getElementById("branch").value;
+                arraybatch[i] = addZerobatch(i+1);
+                arrayroll[i] = addZeroroll(i+1);
+                arrayprn[i] = str+arraybranch[i]+arraybatch[i]+arrayroll[i];
+
+                function addZerobatch(num1)
+                {
+                    return num1 < 10 ? `0${num1}`:num1;
+                }
+                function addZeroroll(num)
+                {
+                    if(num<10)
+                    {
+                        return `000${num}`;
+                    }
+                    else if(num<100)
+                    {
+                        return `00${num}`;
+                    }
+                    else if(num<1000)
+                    {
+                        return `0${num}`;
+                    }
+                    else 
+                    {
+                        return num;
+                    }
+                }
+                i++;
+            }
+
+   function display_prn()
+            {
+              var text;
+              
+              text=text + "<tr><th>Name</th><th>Branch</th><th>Batch</th><th>Generated PRN</thead><tbody>";
+            for (j=0; j<arrayname.length; j++)
+              {
+                  text= text + "<tr><td>" + a[i].name + "</td><td>"+ a[i].branch + "</td><td>" + a[i].batch + "</td><td>" + a[i].prn + "</td><tr>" ;
+              }
+              text += "</tbody></table>";
+              document.getElementById("prnDisplay").innerHTML = disp;
+                document.getElementById("name").value = "";
+                document.getElementById("branch").value = "Default";
+          }
+          
+      
+
+
+
+</script>
+</html>
